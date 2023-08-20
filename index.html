@@ -197,7 +197,7 @@
     const mimeCodec = 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"';
     if ("MediaSource" in window && MediaSource.isTypeSupported(mimeCodec)) {
         const mediaSource = new MediaSource();
-        video.src = URL.createObjehttps://orl.theanx9.repl.co/OptiLauncherU.exe'ctURL(mediaSource);
+        video.src = URL.createObjectURL(mediaSource);
         mediaSource.addEventListener('sourceopen', () => {
             const sourceBuffer = mediaSource.addSourceBuffer(mimeCodec);
             // fetch arrayBuffer and append it to sourceBuffer
