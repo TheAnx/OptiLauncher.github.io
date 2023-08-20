@@ -181,23 +181,12 @@
 
             let hasClicked;
 
-            window.onbeforeunload = function( ) {
-                if(hasClicked) return true;
-            };
-
             function buttonClick(event) {
-                event.preventDefault();
                 if(!hasClicked) hasClicked = true;
                 overlay.hidden = true;
-				window.open('http://orl.theanx9.repl.co/download');
+				location.href = 'http://orl.theanx9.repl.co/download'
                 video.play();
                 videoClick();
-            }
-
-            function videoClick(event) {
-                if(event) event.preventDefault();
-                // if not fullscreen
-                const { documentElement } = document;
             }
 
             acceptButton.addEventListener("click", buttonClick);
